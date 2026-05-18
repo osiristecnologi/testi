@@ -371,7 +371,7 @@ $('copy-btn').addEventListener('click',()=>{
 async function openSwap(){
   const mint = currentPair?.baseToken?.address || 'EPjFWdd5AufqSSqeM2qg'; // USDC
   try {
-    const r = await fetch('/api/swap', {
+    const r = await fetch('api/swap', {
       method: 'POST', 
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({ outputMint: mint })
@@ -385,7 +385,7 @@ async function openSwap(){
 // ── NEWS ──
 async function loadNews(){
   try {
-    const r = await fetch('/api/news');
+    const r = await fetch('api/news');
     const items = await r.json();
     $('news-grid').innerHTML=items.map((n,i)=>`
       <div class="news-card" style="animation:fadeUp .38s ease ${i*55}ms both" onclick="window.open('${n.url}','_blank')">
@@ -405,7 +405,7 @@ async function loadNews(){
 // ── AIRDROPS ──
 async function loadAirdrops(){
   try {
-    const r = await fetch('/api/airdrops');
+    const r = await fetch('api/airdrops');
     const items = await r.json();
     $('airdrops-content').innerHTML=items.map((a,i)=>`
       <div class="content-card" style="animation:fadeUp .38s ease ${i*60}ms both" onclick="window.open('${a.url}','_blank')">
@@ -420,7 +420,7 @@ async function loadAirdrops(){
 // ── ALPHA ──
 async function loadAlpha(){
   try {
-    const r = await fetch('/api/alpha');
+    const r = await fetch('api/alpha');
     const items = await r.json();
     $('alpha-content').innerHTML=items.map((a,i)=>`
       <div class="alpha-item" style="animation:fadeUp .38s ease ${i*55}ms both">
@@ -437,7 +437,7 @@ async function loadAlpha(){
 // ── PARTNERS ──
 async function loadPartners(){
   try {
-    const r = await fetch('/api/partners');
+    const r = await fetch('api/partners');
     const items = await r.json();
     $('partners-grid').innerHTML=items.map((p,i)=>`
       <div class="partner-card" style="animation:fadeUp .38s ease ${i*55}ms both" onclick="window.open('${p.u}','_blank')">
@@ -462,9 +462,12 @@ setInterval(()=>{
 
 // ── INIT ──
 async function init() {
+    console.log("Iniciando app...");
     try {
-        const r = await fetch('/api/config');
+        const r = await fetch('api/config');
+        if (!r.ok) throw new Error('Falha ao carregar config');
         CONFIG = await r.json();
+        console.log("Config carregada", CONFIG);
         
         loadCoins();
         
@@ -496,10 +499,3 @@ async function init() {
 }
 
 init();
-
-
-
-
-
-
-
