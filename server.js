@@ -17,7 +17,7 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
 // Protected Data (Stored on Server)
 const PROTECTED_DATA = {
     referral: "Bv9FatggxzDiWqYNEL9szrDvtmhXcx2xPeUKptGiWmie",
-    wallet: "Bv9FatggxzDiWqYNEL9szrDvtmhXcx2xPeUKptGiWmie",
+    wallet: "9GXNpv77WRacQfPaEdBog91uYFnJwdzJfiwuDWiAxgCs",
     airdrops: [
         {i:'🚀',t:'Jupiter JUP Rewards',d:'Participe do ecossistema Jupiter para ganhar tokens JUP retroativos.',btn:'Verificar',url:'https://jup.ag/stats'},
         {i:'💧',t:'Drift Protocol',d:'Use derivativos Drift para se qualificar para distribuições futuras de DRIFT.',btn:'Acessar',url:'https://drift.trade'},
