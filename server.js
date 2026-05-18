@@ -1,4 +1,4 @@
-const express =
+const express = 
 require('express');
 const path = require('path');
 const cors = require('cors');
@@ -9,12 +9,15 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname)));
+// Serve static files from current directory
+app.use(express.static(__dirname));
+// Specifically ensure assets folder is served
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 // Protected Data (Stored on Server)
 const PROTECTED_DATA = {
     referral: "Bv9FatggxzDiWqYNEL9szrDvtmhXcx2xPeUKptGiWmie",
-    wallet: "9GXNpv77WRacQfPaEdBog91uYFnJwdzJfiwuDWiAxgCs",
+    wallet: "Bv9FatggxzDiWqYNEL9szrDvtmhXcx2xPeUKptGiWmie",
     airdrops: [
         {i:'🚀',t:'Jupiter JUP Rewards',d:'Participe do ecossistema Jupiter para ganhar tokens JUP retroativos.',btn:'Verificar',url:'https://jup.ag/stats'},
         {i:'💧',t:'Drift Protocol',d:'Use derivativos Drift para se qualificar para distribuições futuras de DRIFT.',btn:'Acessar',url:'https://drift.trade'},
@@ -91,8 +94,3 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-
-
-
-
-
