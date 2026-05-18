@@ -786,8 +786,3 @@ img{display:block;max-width:100%}
 }
 .ftab.active{background:var(--yellow);border-color:var(--yellow);color:#0f172a;box-shadow:var(--shadow-yellow)}
 .ftab:hover:not(.active){background:var(--yellow-lt);border-color:rgba(247,198,0,.3)}
-
-
-
-
-
